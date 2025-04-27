@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home() {
+function Perfil() {
   return (
-    <div style={{ fontFamily: "Montserrat, sans-serif", textAlign: "center", marginTop: "50px" }}>
-      <h2>Perfil do Colab</h2>
-      <p>Bem-vindo ao aplicativo de intranet do T Group!</p>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2>Meu Perfil</h2>
+      <p>Área pessoal do colaborador. Em breve mais novidades!</p>
     </div>
   );
 }
 
-export default Home;
+export default Perfil;
