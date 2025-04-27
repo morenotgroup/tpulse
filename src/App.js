@@ -1,46 +1,46 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BottomMenu from './components/BottomMenu';
+// Importe abaixo todas as páginas da aplicação
 import Home from './pages/Home';
-import Eventos from './pages/Eventos';
-import Aniversariantes from './pages/Aniversariantes';
+import Perfil from './pages/Perfil';
 import News from './pages/News';
+import Eventos from './pages/Eventos';
 import Checkin from './pages/Checkin';
-import NFExpress from './pages/NFExpress';
+import Aniversariantes from './pages/Aniversariantes';
 import IA from './pages/IA';
 import LogoKombat from './pages/LogoKombat';
-import Perfil from './pages/Perfil';
+import NFExpress from './pages/NFExpress';
 
 function App() {
   return (
     <Router>
-      <div style={{ fontFamily: "Montserrat, sans-serif", textAlign: "center" }}>
-        <h1>T Pulse - Intranet T Group</h1>
-
-        {/* Menu de navegação */}
-        <nav style={{ marginBottom: "30px" }}>
-          <Link to="/" style={{ margin: "0 10px" }}>Home</Link>
-          <Link to="/eventos" style={{ margin: "0 10px" }}>Eventos</Link>
-          <Link to="/aniversariantes" style={{ margin: "0 10px" }}>Aniversariantes</Link>
-          <Link to="/news" style={{ margin: "0 10px" }}>Notícias</Link>
-          <Link to="/checkin" style={{ margin: "0 10px" }}>Check-in</Link>
-          <Link to="/nfexpress" style={{ margin: "0 10px" }}>NF Express</Link>
-          <Link to="/ia" style={{ margin: "0 10px" }}>IA T Pulse</Link>
-          <Link to="/logokombat" style={{ margin: "0 10px" }}>Logo Kombat</Link>
-          <Link to="/perfil" style={{ margin: "0 10px" }}>Perfil</Link>
-        </nav>
-
-        {/* Rotas */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/eventos" element={<Eventos />} />
-          <Route path="/aniversariantes" element={<Aniversariantes />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/checkin" element={<Checkin />} />
-          <Route path="/nfexpress" element={<NFExpress />} />
-          <Route path="/ia" element={<IA />} />
-          <Route path="/logokombat" element={<LogoKombat />} />
-          <Route path="/perfil" element={<Perfil />} />
-        </Routes>
+      <div style={{
+        fontFamily: 'Montserrat, sans-serif',
+        backgroundColor: '#fff8f0',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingBottom: '60px' // Espaço para o BottomMenu não cobrir o conteúdo
+      }}>
+        {/* Conteúdo principal centralizado */}
+        <div style={{ width: '100%', maxWidth: '600px', flex: 1 }}>
+          <Routes>
+            {/* Mantenha todas as rotas existentes aqui, sem alterações */}
+            <Route path="/" element={<Home />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/eventos" element={<Eventos />} />
+            <Route path="/checkin" element={<Checkin />} />
+            <Route path="/aniversariantes" element={<Aniversariantes />} />
+            <Route path="/ia" element={<IA />} />
+            <Route path="/logokombat" element={<LogoKombat />} />
+            <Route path="/nfexpress" element={<NFExpress />} />
+          </Routes>
+        </div>
+        {/* Menu de navegação inferior fixo */}
+        <BottomMenu />
       </div>
     </Router>
   );
