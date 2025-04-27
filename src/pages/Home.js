@@ -5,11 +5,19 @@ import { IoNewspaper } from 'react-icons/io5';
 
 function Home() {
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <div style={{
+      backgroundImage: "url('https://images.unsplash.com/photo-1508923567004-3a6b8004f3d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      minHeight: "100vh",
+      padding: "20px",
+      textAlign: "center"
+    }}>
       
       {/* Boas-vindas */}
-      <h2 style={{ color: "#333", marginBottom: "10px" }}>Bem-vindo(a) ao T Pulse!</h2>
-      <p style={{ color: "#666", fontSize: "14px", marginBottom: "30px" }}>
+      <h2 style={{ color: "#333", backgroundColor: "rgba(255, 255, 255, 0.7)", borderRadius: "8px", padding: "10px" }}>Bem-vindo(a) ao T Pulse!</h2>
+      <p style={{ color: "#666", fontSize: "14px", backgroundColor: "rgba(255, 255, 255, 0.6)", borderRadius: "8px", padding: "6px", marginTop: "10px", marginBottom: "30px" }}>
         Sua intranet oficial do T Group
       </p>
 
@@ -33,8 +41,8 @@ function Home() {
 
       </div>
 
-      {/* Espaço final */}
-      <div style={{ marginTop: "40px", fontSize: "12px", color: "#999" }}>
+      {/* Rodapé */}
+      <div style={{ marginTop: "40px", fontSize: "12px", color: "#999", backgroundColor: "rgba(255,255,255,0.7)", borderRadius: "8px", padding: "5px" }}>
         Powered by T Group
       </div>
       
@@ -42,9 +50,9 @@ function Home() {
   );
 }
 
-// Estilos
+// Estilos internos
 const cardStyle = {
-  backgroundColor: "#ffffff",
+  backgroundColor: "rgba(255,255,255,0.85)",
   borderRadius: "12px",
   padding: "20px",
   textDecoration: "none",
