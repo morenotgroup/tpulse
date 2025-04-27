@@ -22,12 +22,11 @@ function App() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingBottom: '60px' // Espaço para o BottomMenu não cobrir o conteúdo
+        paddingBottom: '60px'
       }}>
         {/* Conteúdo principal centralizado */}
         <div style={{ width: '100%', maxWidth: '600px', flex: 1 }}>
           <Routes>
-            {/* Mantenha todas as rotas existentes aqui, sem alterações */}
             <Route path="/" element={<Home />} />
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/news" element={<News />} />
@@ -39,7 +38,6 @@ function App() {
             <Route path="/nfexpress" element={<NFExpress />} />
           </Routes>
         </div>
-        {/* Menu de navegação inferior fixo */}
         <BottomMenu />
       </div>
     </Router>
