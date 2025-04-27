@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
-import { MdEvent } from 'react-icons/md';
+import { MdEvent, MdLunchDining } from 'react-icons/md';
 import { IoNewspaper } from 'react-icons/io5';
-import { BsRobot } from 'react-icons/bs';
 import { FaUser } from 'react-icons/fa';
 
 function BottomMenu() {
   const location = useLocation();
-  
+
   const menuStyle = {
     position: "fixed",
     bottom: 0,
@@ -31,7 +30,7 @@ function BottomMenu() {
   });
 
   const iconStyle = (path) => ({
-    fontSize: "20px",
+    fontSize: "22px",
     marginBottom: "4px",
     color: location.pathname === path ? "#ff7a00" : "#333"
   });
@@ -42,18 +41,22 @@ function BottomMenu() {
         <AiFillHome style={iconStyle('/')} />
         Home
       </Link>
+
       <Link style={linkStyle('/eventos')} to="/eventos">
         <MdEvent style={iconStyle('/eventos')} />
         Eventos
       </Link>
+
       <Link style={linkStyle('/news')} to="/news">
         <IoNewspaper style={iconStyle('/news')} />
         Notícias
       </Link>
-      <Link style={linkStyle('/ia')} to="/ia">
-        <BsRobot style={iconStyle('/ia')} />
-        IA
+
+      <Link style={linkStyle('/checkin')} to="/checkin">
+        <MdLunchDining style={iconStyle('/checkin')} />
+        Check-in
       </Link>
+
       <Link style={linkStyle('/perfil')} to="/perfil">
         <FaUser style={iconStyle('/perfil')} />
         Perfil
