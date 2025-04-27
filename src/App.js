@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BottomMenu from './components/BottomMenu';
-// Importe abaixo todas as páginas da aplicação
 import Home from './pages/Home';
 import Perfil from './pages/Perfil';
 import News from './pages/News';
@@ -24,7 +23,15 @@ function App() {
         alignItems: 'center',
         paddingBottom: '60px'
       }}>
-        {/* Conteúdo principal centralizado */}
+
+        {/* LOGO */}
+        <img
+          src="/TGroupLogo.png"
+          alt="T Group Logo"
+          style={{ width: "140px", marginTop: "20px", marginBottom: "10px" }}
+        />
+
+        {/* Rotas */}
         <div style={{ width: '100%', maxWidth: '600px', flex: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -38,6 +45,7 @@ function App() {
             <Route path="/nfexpress" element={<NFExpress />} />
           </Routes>
         </div>
+
         <BottomMenu />
       </div>
     </Router>
