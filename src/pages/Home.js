@@ -6,7 +6,7 @@ import { IoNewspaper } from 'react-icons/io5';
 function Home() {
   return (
     <div style={{
-      backgroundImage: "url('https://images.unsplash.com/photo-1508923567004-3a6b8004f3d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
+      backgroundImage: "url('/background-home.png')",
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
@@ -16,12 +16,28 @@ function Home() {
     }}>
       
       {/* Boas-vindas */}
-      <h2 style={{ color: "#333", backgroundColor: "rgba(255, 255, 255, 0.7)", borderRadius: "8px", padding: "10px" }}>Bem-vindo(a) ao T Pulse!</h2>
-      <p style={{ color: "#666", fontSize: "14px", backgroundColor: "rgba(255, 255, 255, 0.6)", borderRadius: "8px", padding: "6px", marginTop: "10px", marginBottom: "30px" }}>
+      <h2 style={{
+        color: "#333",
+        backgroundColor: "rgba(255, 255, 255, 0.7)",
+        borderRadius: "8px",
+        padding: "10px"
+      }}>
+        Bem-vindo(a) ao T Pulse!
+      </h2>
+
+      <p style={{
+        color: "#666",
+        fontSize: "14px",
+        backgroundColor: "rgba(255, 255, 255, 0.6)",
+        borderRadius: "8px",
+        padding: "6px",
+        marginTop: "10px",
+        marginBottom: "30px"
+      }}>
         Sua intranet oficial do T Group
       </p>
 
-      {/* Destaques Rápidos */}
+      {/* Destaques */}
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         
         <Link to="/eventos" style={cardStyle}>
@@ -42,15 +58,22 @@ function Home() {
       </div>
 
       {/* Rodapé */}
-      <div style={{ marginTop: "40px", fontSize: "12px", color: "#999", backgroundColor: "rgba(255,255,255,0.7)", borderRadius: "8px", padding: "5px" }}>
+      <div style={{
+        marginTop: "40px",
+        fontSize: "12px",
+        color: "#999",
+        backgroundColor: "rgba(255,255,255,0.7)",
+        borderRadius: "8px",
+        padding: "5px"
+      }}>
         Powered by T Group
       </div>
-      
+
     </div>
   );
 }
 
-// Estilos internos
+// Estilos
 const cardStyle = {
   backgroundColor: "rgba(255,255,255,0.85)",
   borderRadius: "12px",
