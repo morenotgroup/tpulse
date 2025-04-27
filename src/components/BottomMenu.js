@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
-import { MdEvent, MdLunchDining } from 'react-icons/md';
+import { MdEvent, MdLunchDining, MdOutlineReceiptLong } from 'react-icons/md';
 import { IoNewspaper } from 'react-icons/io5';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaRobot } from 'react-icons/fa';
+import { GiCrossedSwords } from 'react-icons/gi';
 
 function BottomMenu() {
   const location = useLocation();
@@ -26,11 +27,11 @@ function BottomMenu() {
     alignItems: "center",
     textDecoration: "none",
     color: location.pathname === path ? "#ff7a00" : "#333",
-    fontSize: "12px"
+    fontSize: "11px"
   });
 
   const iconStyle = (path) => ({
-    fontSize: "22px",
+    fontSize: "20px",
     marginBottom: "4px",
     color: location.pathname === path ? "#ff7a00" : "#333"
   });
@@ -55,6 +56,21 @@ function BottomMenu() {
       <Link style={linkStyle('/checkin')} to="/checkin">
         <MdLunchDining style={iconStyle('/checkin')} />
         Check-in
+      </Link>
+
+      <Link style={linkStyle('/nfexpress')} to="/nfexpress">
+        <MdOutlineReceiptLong style={iconStyle('/nfexpress')} />
+        NF Express
+      </Link>
+
+      <Link style={linkStyle('/ia')} to="/ia">
+        <FaRobot style={iconStyle('/ia')} />
+        IA
+      </Link>
+
+      <Link style={linkStyle('/logokombat')} to="/logokombat">
+        <GiCrossedSwords style={iconStyle('/logokombat')} />
+        Kombat
       </Link>
 
       <Link style={linkStyle('/perfil')} to="/perfil">
