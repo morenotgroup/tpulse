@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home() {
+function IA() {
   return (
-    <div style={{ fontFamily: "Montserrat, sans-serif", textAlign: "center", marginTop: "50px" }}>
-      <h2>IA Gemini</h2>
-      <p>Bem-vindo ao aplicativo de intranet do T Group!</p>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h2>Assistente IA do T Pulse</h2>
+      <p>Em breve você poderá conversar diretamente com a nossa IA integrada!</p>
     </div>
   );
 }
 
-export default Home;
+export default IA;
