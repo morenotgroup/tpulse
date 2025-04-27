@@ -11,9 +11,9 @@ function LogoKombat() {
 
   return (
     <div style={{ padding: "20px", textAlign: "center" }}>
-      <h2>Logo Kombat!</h2>
+      <h2 style={{ marginBottom: "10px" }}>Logo Kombat!</h2>
       <p style={{ fontSize: "14px", color: "#666", marginBottom: "20px" }}>
-        Clique para eliminar a concorrência!
+        Clique nos concorrentes para eliminá-los!
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
         {logos.map((logo, index) => (
