@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { MdEvent, MdLunchDining, MdOutlineReceiptLong } from 'react-icons/md';
 import { IoNewspaper } from 'react-icons/io5';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaRobot } from 'react-icons/fa';
 import { GiCrossedSwords } from 'react-icons/gi';
 
 function BottomMenu() {
@@ -61,6 +61,11 @@ function BottomMenu() {
       <Link style={linkStyle('/nfexpress')} to="/nfexpress">
         <MdOutlineReceiptLong style={iconStyle('/nfexpress')} />
         NF Express
+      </Link>
+
+      <Link style={linkStyle('/ia')} to="/ia">
+        <FaRobot style={iconStyle('/ia')} />
+        IA
       </Link>
 
       <Link style={linkStyle('/logokombat')} to="/logokombat">
