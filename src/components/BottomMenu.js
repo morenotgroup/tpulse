@@ -13,27 +13,32 @@ function BottomMenu() {
     position: "fixed",
     bottom: 0,
     width: "100%",
-    backgroundColor: "#fff8f0",
+    background: "linear-gradient(135deg, #ffffff 0%, #fef8f3 100%)",
     display: "flex",
     justifyContent: "space-around",
-    padding: "8px 0",
-    borderTop: "1px solid #ccc",
-    zIndex: 1000
+    alignItems: "center",
+    padding: "10px 0",
+    borderTop: "1px solid #eee",
+    zIndex: 1000,
+    boxShadow: "0 -2px 8px rgba(0,0,0,0.05)"
   };
 
   const linkStyle = (path) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
     textDecoration: "none",
     color: location.pathname === path ? "#ff7a00" : "#333",
-    fontSize: "11px"
+    fontSize: "11px",
+    gap: "2px"
   });
 
   const iconStyle = (path) => ({
-    fontSize: "20px",
-    marginBottom: "4px",
-    color: location.pathname === path ? "#ff7a00" : "#333"
+    fontSize: "24px",
+    marginBottom: "2px",
+    color: location.pathname === path ? "#ff7a00" : "#999",
+    transition: "color 0.3s ease"
   });
 
   return (
