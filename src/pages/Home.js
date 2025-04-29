@@ -6,13 +6,14 @@ import { IoNewspaper } from 'react-icons/io5';
 function Home() {
   return (
     <div style={{
-      backgroundImage: "url('/background-home.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
+      background: "linear-gradient(135deg, #fef8f3 0%, #f9e4c8 100%)",
       minHeight: "100vh",
       padding: "20px",
-      textAlign: "center"
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      alignItems: "center"
     }}>
       
       {/* Boas-vindas */}
@@ -37,7 +38,7 @@ function Home() {
         Sua intranet oficial do T Group
       </p>
 
-      {/* Destaques */}
+      {/* Cards principais */}
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         
         <Link to="/eventos" style={cardStyle}>
@@ -57,7 +58,7 @@ function Home() {
 
       </div>
 
-      {/* Rodapé */}
+      {/* Rodapé interno */}
       <div style={{
         marginTop: "40px",
         fontSize: "12px",
