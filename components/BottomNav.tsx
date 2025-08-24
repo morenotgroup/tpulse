@@ -3,13 +3,17 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Home, Calendar, Utensils, FilePlus2, MoreHorizontal } from 'lucide-react'
 
-const items = [
-  { href: '/', icon: Home, label: 'Home' },
-  { href: '/eventos', icon: Calendar, label: 'Eventos' },
-  { href: '/almoco', icon: Utensils, label: 'Almoço' },
-  { href: '/nf', icon: FilePlus2, label: 'NF' },
-  { href: '/mais', icon: MoreHorizontal, label: 'Mais' },
-]
+// Tipamos explicitamente os caminhos internos aceitos pelo <Link/>
+type Href = '/' | '/eventos' | '/almoco' | '/nf' | '/mais'
+type NavItem = { href: Href; icon: any; label: string }
+
+const items: readonly NavItem[] = [
+  { href: '/',        icon: Home,           label: 'Home' },
+  { href: '/eventos', icon: Calendar,       label: 'Eventos' },
+  { href: '/almoco',  icon: Utensils,       label: 'Almoço' },
+  { href: '/nf',      icon: FilePlus2,      label: 'NF' },
+  { href: '/mais',    icon: MoreHorizontal, label: 'Mais' },
+] as const
 
 export default function BottomNav() {
   const path = usePathname()
