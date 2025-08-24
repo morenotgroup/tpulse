@@ -1,0 +1,61 @@
+{
+  "appTitle": "T Group Intra",
+  "welcomeMessage": "Bem-vind@",
+  "nfLink": "https://forms.gle/EXEMPLO-NF-AGO-25",
+  "almocoUrl": "https://seu-link-atual-do-checkin.com",
+  "beneficios": [
+    {
+      "title": "TotalPass",
+      "subtitle": "Bem-estar f\u00edsico + sa\u00fade mental",
+      "cta": "Ativar",
+      "url": "https://totalpass.com.br/",
+      "description": "Plano corporativo com academias e apoio psicol\u00f3gico."
+    },
+    {
+      "title": "Petin",
+      "subtitle": "Cuidados para pets",
+      "cta": "Acessar",
+      "url": "https://petin.com.br/",
+      "description": "Parceria para servi\u00e7os e benef\u00edcios para seu pet."
+    },
+    {
+      "title": "Belas Artes",
+      "subtitle": "20% de desconto",
+      "cta": "Ver cursos",
+      "url": "https://www.belasartes.br/",
+      "description": "Desconto em todos os cursos para colaboradores."
+    }
+  ],
+  "manuais": [
+    {
+      "title": "Cultura T Group",
+      "url": "/pdfs/cultura.pdf"
+    },
+    {
+      "title": "Emiss\u00e3o de Nota Fiscal",
+      "url": "/pdfs/nf.pdf"
+    },
+    {
+      "title": "Abrir MEI",
+      "url": "/pdfs/mei.pdf"
+    },
+    {
+      "title": "Disque Den\u00fancia",
+      "url": "/pdfs/denuncia.pdf"
+    }
+  ],
+  "capacitar": [
+    {
+      "title": "Excel para Opera\u00e7\u00f5es",
+      "url": "https://example.com/excel"
+    },
+    {
+      "title": "Marketing Digital \u2013 Fundamentos",
+      "url": "https://example.com/marketing"
+    },
+    {
+      "title": "Gest\u00e3o de Projetos para Eventos",
+      "url": "https://example.com/projetos"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "evt-001",
+    "title": "Caf\u00e9 com T",
+    "date": "2025-09-05",
+    "time": "10:00",
+    "type": "G&C",
+    "location": "Backyard 209",
+    "description": "Caf\u00e9, updates e abertura/encerramento de G&C."
+  },
+  {
+    "id": "evt-002",
+    "title": "Palestra Audiovisual",
+    "date": "2025-09-14",
+    "time": "14:00",
+    "type": "Palestra",
+    "location": "Sala Multi",
+    "description": "Ind\u00fastria do audiovisual em ag\u00eancias e produtoras."
+  },
+  {
+    "id": "evt-003",
+    "title": "Happy Hour T Group",
+    "date": "2025-09-27",
+    "time": "18:00",
+    "type": "HappyHour",
+    "location": "Backyard 209",
+    "description": "Confraterniza\u00e7\u00e3o mensal. Dress code: comfy."
+  },
+  {
+    "id": "evt-004",
+    "title": "Onboarding Geral",
+    "date": "2025-10-03",
+    "time": "09:30",
+    "type": "Onboarding",
+    "location": "Sala 2",
+    "description": "Integra\u00e7\u00e3o e cultura do T Group."
+  }
+]
