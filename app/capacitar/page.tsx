@@ -1,5 +1,4 @@
 import config from '@/data/config.json'
-import Link from 'next/link'
 
 export default function Page() {
   return (
@@ -10,7 +9,14 @@ export default function Page() {
         {config.capacitar.map((c) => (
           <div key={c.title} className="card">
             <div className="font-semibold">{c.title}</div>
-            <Link href={c.url} className="btn mt-3 w-full text-center" target="_blank">Acessar</Link>
+            <a
+              href={c.url}
+              className="btn mt-3 w-full text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Acessar
+            </a>
           </div>
         ))}
       </div>
