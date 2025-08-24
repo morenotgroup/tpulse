@@ -1,5 +1,4 @@
 import config from '@/data/config.json'
-import Link from 'next/link'
 
 export default function Page() {
   return (
@@ -14,7 +13,14 @@ export default function Page() {
                 <div className="font-semibold">{m.title}</div>
                 <div className="text-xs text-[color:var(--muted)]">PDF</div>
               </div>
-              <Link href={m.url} className="btn text-sm" target="_blank">Abrir</Link>
+              <a
+                href={m.url}
+                className="btn text-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir
+              </a>
             </div>
           </li>
         ))}
