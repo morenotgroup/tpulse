@@ -1,11 +1,12 @@
 import Link from 'next/link'
 
+const links = [
+  { href: '/beneficios', label: 'Benefícios', emoji: '🎁' },
+  { href: '/capacitar',  label: 'Capacitar',  emoji: '🎓' },
+  { href: '/manuais',    label: 'Manuais',    emoji: '📚' },
+] as const
+
 export default function Page() {
-  const links = [
-    { href: '/beneficios', label: 'Benefícios', emoji: '🎁' },
-    { href: '/capacitar', label: 'Capacitar', emoji: '🎓' },
-    { href: '/manuais', label: 'Manuais', emoji: '📚' },
-  ]
   return (
     <div className="px-4 pt-5 pb-24">
       <h1 className="text-xl font-semibold mb-3">Mais</h1>
