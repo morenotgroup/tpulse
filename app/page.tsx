@@ -15,13 +15,13 @@ function useUserName() {
 }
 
 const links = [
-  { href: '/eventos', label: 'Eventos', emoji: '📅' },
-  { href: '/almoco', label: 'Check-in Almoço', emoji: '🍽️' },
-  { href: '/nf', label: 'NF Express', emoji: '🧾' },
-  { href: '/beneficios', label: 'Benefícios', emoji: '🎁' },
-  { href: '/capacitar', label: 'Capacitar', emoji: '🎓' },
-  { href: '/manuais', label: 'Manuais', emoji: '📚' },
-]
+  { href: '/eventos',    label: 'Eventos',           emoji: '📅' },
+  { href: '/almoco',     label: 'Check-in Almoço',   emoji: '🍽️' },
+  { href: '/nf',         label: 'NF Express',        emoji: '🧾' },
+  { href: '/beneficios', label: 'Benefícios',        emoji: '🎁' },
+  { href: '/capacitar',  label: 'Capacitar',         emoji: '🎓' },
+  { href: '/manuais',    label: 'Manuais',           emoji: '📚' },
+] as const
 
 export default function Home() {
   const nome = useUserName()
@@ -29,7 +29,9 @@ export default function Home() {
   return (
     <>
       <header className="px-4 pt-5 pb-3">
-        <h1 className="text-xl font-semibold">Bem-vinda(o), <span className="text-[color:var(--accent2)]">{nome}</span> 👋</h1>
+        <h1 className="text-xl font-semibold">
+          Bem-vinda(o), <span className="text-[color:var(--accent2)]">{nome}</span> 👋
+        </h1>
         <p className="text-sm text-[color:var(--muted)]">A casa do T Group no seu celular.</p>
       </header>
 
