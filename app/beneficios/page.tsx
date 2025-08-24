@@ -1,5 +1,4 @@
 import config from '@/data/config.json'
-import Link from 'next/link'
 
 export default function Page() {
   return (
@@ -14,7 +13,14 @@ export default function Page() {
                 <div className="font-semibold">{b.title}</div>
                 <div className="text-sm text-[color:var(--muted)]">{b.subtitle}</div>
               </div>
-              <Link href={b.url} className="btn text-sm" target="_blank">{b.cta}</Link>
+              <a
+                href={b.url}
+                className="btn text-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {b.cta}
+              </a>
             </div>
             <p className="text-sm mt-2">{b.description}</p>
           </div>
