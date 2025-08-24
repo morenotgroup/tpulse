@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import config from '@/data/config.json'
 
 export default function Page() {
@@ -7,13 +6,14 @@ export default function Page() {
       <h1 className="text-xl font-semibold mb-2">NF Express</h1>
       <div className="card">
         <p className="text-sm">Envie sua nota do mês pelo link abaixo:</p>
-        <Link
+        <a
           href={config.nfLink}
           className="btn mt-3 w-full text-center"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Enviar nota fiscal
-        </Link>
+        </a>
         <p className="text-xs text-[color:var(--muted)] mt-3">
           O link é atualizado mensalmente por Gente & Cultura.
         </p>
