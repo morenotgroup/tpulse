@@ -2,9 +2,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Home, Calendar, Utensils, FilePlus2, MoreHorizontal } from 'lucide-react'
+import type { Route } from 'next'   // 👈 utilitário de tipo do Next
 
-// Tipamos explicitamente os caminhos internos aceitos pelo <Link/>
-type Href = '/' | '/eventos' | '/almoco' | '/nf' | '/mais'
+// Tipamos os caminhos internos com Route<...> para satisfazer o typedRoutes
+type Href = Route<'/' | '/eventos' | '/almoco' | '/nf' | '/mais'>
 type NavItem = { href: Href; icon: any; label: string }
 
 const items: readonly NavItem[] = [
