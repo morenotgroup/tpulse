@@ -2,7 +2,7 @@
 import events from '@/data/events.json'
 import Link from 'next/link'
 
-const byMonth = (iso: string) => iso.slice(0,7) // YYYY-MM
+const byMonth = (iso: string) => iso.slice(0,7)
 const currentMonth = new Date().toISOString().slice(0,7)
 
 export default function MiniCalendar() {
@@ -12,7 +12,12 @@ export default function MiniCalendar() {
     <div className="card">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold">Este mês</h3>
-        <Link href="/eventos" className="text-sm text-[color:var(--accent2)]">ver todos</Link>
+        <Link href="/eventos" className="text-sm" style={{
+          background: 'linear-gradient(90deg, var(--accent), var(--accent2))',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          color: 'transparent'
+        }}>ver todos</Link>
       </div>
       <ul className="mt-3 space-y-2">
         {featured.length === 0 && <li className="text-[color:var(--muted)] text-sm">Sem eventos cadastrados.</li>}
