@@ -2,24 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Paleta viva + acentos neon */
 :root {
-  --bg: #0C0C0D;
-  --card: #131316;
-  --text: #F4F4F5;
-  --muted: #A1A1AA;
-  --accent: #7C3AED;
-  --accent2: #22D3EE;
+  --bg: #070710;
+  --bg-accent: #0b0b18;
+  --text: #F8FAFC;
+  --muted: #A8B0C3;
+
+  /* Cores festivas */
+  --accent: #9F6BFF;   /* violeta neon */
+  --accent2: #22E6FF;  /* ciano neon */
+  --accent3: #FF5BBE;  /* magenta */
+
+  /* Vidro líquido */
+  --glass-bg: rgba(15, 15, 22, 0.40);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
 }
 
-html, body { background: var(--bg); color: var(--text); }
+/* Fundo: imagem + gradiente animado sutil (leve, sem JS) */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100%;
+  /* Camada de imagem */
+  background-image:
+    radial-gradient(1200px 400px at 80% -10%, rgba(159,107,255,0.25), transparent 60%),
+    radial-gradient(800px 300px at 0% 110%, rgba(34,230,255,0.18), transparent 60%),
+    url('/bg-party.jpg'); /* Suba sua imagem em public/bg-party.jpg */
+  background-size: cover, cover, cover;
+  background-attachment: fixed, fixed, fixed;
+  background-position: center, center, center;
+}
+
+/* “Sparkles” discretos (opcional): descomente se quiser um brilho extra
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.18), transparent),
+    radial-gradient(2px 2px at 70% 40%, rgba(255,255,255,0.14), transparent),
+    radial-gradient(2px 2px at 40% 80%, rgba(255,255,255,0.12), transparent);
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  0%   { opacity: .25; filter: saturate(1);   }
+  100% { opacity: .45; filter: saturate(1.2); }
+}
+*/
 
 @layer base {
   * { -webkit-tap-highlight-color: transparent; }
-  body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial; }
+  body {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial;
+  }
 }
 
+/* Estilo “liquid glass” */
 @layer components {
-  .card { @apply rounded-xl bg-[color:var(--card)] shadow-lg p-4 border border-white/5; }
-  .btn { @apply inline-flex items-center justify-center rounded-lg px-4 py-3 font-medium active:scale-95 transition; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
-  .chip { @apply text-xs px-2 py-1 rounded-full border border-white/10; background: linear-gradient(135deg, #1a1a1d, #111114); }
+  /* Cartão em vidro líquido */
+  .card {
+    @apply rounded-2xl p-4 shadow-xl border;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)) padding-box,
+      linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05)) border-box;
+    border-color: var(--glass-border);
+    backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  /* Variante sólida, se quiser usar em algum bloco específico */
+  .card-solid {
+    @apply rounded-2xl p-4 border;
+    background: rgba(10, 10, 20, 0.85);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  /* Botão: vidro + gradiente neon */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-3 font-medium active:scale-95 transition;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)) padding-box,
+      linear-gradient(135deg, var(--accent), var(--accent2)) border-box;
+    border: 1px solid transparent;
+    backdrop-filter: blur(10px) saturate(1.05);
+    -webkit-backdrop-filter: blur(10px) saturate(1.05);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      0 10px 24px rgba(0,0,0,0.35);
+  }
+
+  .chip {
+    @apply text-xs px-2 py-1 rounded-full border;
+    background:
+      linear-gradient(120deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+    border-color: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px) saturate(1.1);
+    -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  }
+
+  /* Título com gradiente neon */
+  .title-neon {
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
