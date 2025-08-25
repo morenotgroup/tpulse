@@ -28,16 +28,20 @@ export default function Home() {
 
   return (
     <>
-      <header className="px-4 pt-5 pb-3">
-        <h1 className="text-xl font-semibold">
-          Bem-vinda(o), <span className="text-[color:var(--accent2)]">{nome}</span> 👋
+      <header className="px-4 pt-6 pb-3">
+        <h1 className="text-[22px] font-semibold">
+          Bem-vinda(o), <span className="title-neon">{nome}</span> 👋
         </h1>
         <p className="text-sm text-[color:var(--muted)]">A casa do T Group no seu celular.</p>
       </header>
 
+      {/* Hero “liquid glass” com foto */}
       <section className="px-4">
-        <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/5">
+        <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden border border-white/20 card">
           <Image src="/hero.jpg" alt="T Group" fill priority className="object-cover" />
+          {/* Glow sutil nas bordas */}
+          <div className="absolute inset-0 pointer-events-none"
+               style={{boxShadow: 'inset 0 0 80px rgba(0,0,0,0.35)'}} />
         </div>
       </section>
 
