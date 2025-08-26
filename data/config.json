@@ -60,30 +60,12 @@
   ],
   {
   "wallpapers": [
-    {
-      "title": "Neon Party",
-      "url": "/wallpapers/wallpaper_1.png"
-    },
-    {
-      "title": "Liquid Glass",
-      "url": "/wallpapers/wallpaper_2.png"
-    },
-    {
-      "title": "Confetti Vibes",
-      "url": "/wallpapers/wallpaper_3.png"
-    },
-    {
-      "title": "Minimal Clean",
-      "url": "/wallpapers/wallpaper_4.png"
-    },
-    {
-      "title": "Abstract",
-      "url": "/wallpapers/wallpaper_5.png"
-    },
-    {
-      "title": "Extra",
-      "url": "/wallpapers/wallpaper_6.png"
-    }
-  ]
+  { "title": "Neon Explosion",     "url": "/wallpapers/wallpaper_1.png" },
+  { "title": "Liquid Glass",       "url": "/wallpapers/wallpaper_2.png" },
+  { "title": "Abstract Waves",     "url": "/wallpapers/wallpaper_3.png" },
+  { "title": "Confetti Vibes",     "url": "/wallpapers/wallpaper_4.png" },
+  { "title": "Dynamic Gradient",   "url": "/wallpapers/wallpaper_5.png" },
+  { "title": "Festival Night",     "url": "/wallpapers/wallpaper_6.png" }
+]
 }
 }
