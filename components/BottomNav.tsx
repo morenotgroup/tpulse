@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home, Calendar, Utensils, FilePlus2, MoreHorizontal } from 'lucide-react'
+import { Home, Calendar, Utensils, FilePlus2, ImageIcon, MoreHorizontal } from 'lucide-react'
 import type { Route } from 'next'   // 👈 utilitário de tipo do Next
 
 // Tipamos os caminhos internos com Route<...> para satisfazer o typedRoutes
