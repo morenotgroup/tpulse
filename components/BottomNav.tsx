@@ -13,6 +13,7 @@ const items: readonly NavItem[] = [
   { href: '/eventos', icon: Calendar,       label: 'Eventos' },
   { href: '/almoco',  icon: Utensils,       label: 'Almoço' },
   { href: '/nf',      icon: FilePlus2,      label: 'NF' },
+  { href: '/wallpapers', icon: ImageIcon, label: 'Wallpapers' },
   { href: '/mais',    icon: MoreHorizontal, label: 'Mais' },
 ] as const
 
