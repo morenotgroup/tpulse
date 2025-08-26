@@ -1,12 +1,11 @@
-import withPWA from 'next-pwa'
-
 /** @type {import('next').NextConfig} */
-const baseConfig = {
-  reactStrictMode: true,
-  experimental: { typedRoutes: true },
-}
+const nextConfig = {
+  experimental: {
+    typedRoutes: false, // 👈 desliga rotas tipadas para evitar erros chato
+  },
+  images: {
+    unoptimized: true
+  }
+};
 
-export default withPWA({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-})(baseConfig)
+module.exports = nextConfig;
