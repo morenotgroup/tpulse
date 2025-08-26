@@ -21,6 +21,7 @@ const links = [
   { href: '/beneficios', label: 'Benefícios',        emoji: '🎁' },
   { href: '/capacitar',  label: 'Capacitar',         emoji: '🎓' },
   { href: '/manuais',    label: 'Manuais',           emoji: '📚' },
+  { href: '/wallpapers', label: 'Wallpapers',        emoji: '🖼️' },
 ] as const
 
 export default function Home() {
