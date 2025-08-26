@@ -52,7 +52,7 @@ export default function Home() {
 
       <section className="px-4 mt-4 grid grid-cols-2 gap-3 pb-24">
         {links.map((l) => (
-          <Link key={l.href} href={l.href} className="card active:scale-95">
+          <Link key={l.href} href={l.href as any} className="card active:scale-95">
             <div className="text-2xl">{l.emoji}</div>
             <div className="mt-2 font-semibold">{l.label}</div>
             <div className="text-xs text-[color:var(--muted)]">Acessar</div>
