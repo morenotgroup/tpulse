@@ -1,71 +1,52 @@
 {
   "appTitle": "T Group Intra",
   "welcomeMessage": "Bem-vind@",
-  "nfLink": "https://forms.gle/EXEMPLO-NF-AGO-25",
-  "almocoUrl": "https://seu-link-atual-do-checkin.com",
+  "nfLink": "https://exemplo.com/nf-do-mes",
+  "almocoUrl": "https://exemplo.com/checkin-almoco",
+
   "beneficios": [
     {
       "title": "TotalPass",
-      "subtitle": "Bem-estar f\u00edsico + sa\u00fade mental",
+      "subtitle": "Bem-estar físico + saúde mental",
       "cta": "Ativar",
       "url": "https://totalpass.com.br/",
-      "description": "Plano corporativo com academias e apoio psicol\u00f3gico."
+      "description": "Plano corporativo com academias e apoio psicológico."
     },
     {
       "title": "Petin",
       "subtitle": "Cuidados para pets",
       "cta": "Acessar",
       "url": "https://petin.com.br/",
-      "description": "Parceria para servi\u00e7os e benef\u00edcios para seu pet."
+      "description": "Parceria para serviços e benefícios para seu pet."
     },
     {
       "title": "Belas Artes",
-      "subtitle": "20% de desconto",
+      "subtitle": "Desconto para colaboradores",
       "cta": "Ver cursos",
       "url": "https://www.belasartes.br/",
-      "description": "Desconto em todos os cursos para colaboradores."
+      "description": "Desconto em cursos de graduação e pós."
     }
   ],
+
   "manuais": [
-    {
-      "title": "Cultura T Group",
-      "url": "https://docs.google.com/document/d/1vdfFBKDK1W9DMWm7e8Iyq8SghgTlF_Po4chtgBFOj5c/edit?usp=sharing"
-    },
-    {
-      "title": "Emiss\u00e3o de Nota Fiscal",
-      "url": "https://drive.google.com/file/d/1YG9iJvmXLmnoUUPGM-68jRtBAHrg3kXN/view?usp=sharing"
-    },
-    {
-      "title": "Abrir MEI",
-      "url": "https://drive.google.com/file/d/1Ya9lpaVlrqcz6vbzvPZVvEK7JY6i-kk8/view?usp=sharing"
-    },
-    {
-      "title": "Disque Den\u00fancia",
-      "url": "https://docs.google.com/document/d/14o8hIhUSFW1q4buUSu7XeDNZQbRi5RYF6sn3LlkuL8k/edit?usp=sharing"
-    }
+    { "title": "Cultura T Group",         "url": "/pdfs/cultura.pdf" },
+    { "title": "Emissão de Nota Fiscal", "url": "/pdfs/nf.pdf" },
+    { "title": "Abrir MEI",              "url": "/pdfs/mei.pdf" },
+    { "title": "Disque Denúncia",        "url": "/pdfs/denuncia.pdf" }
   ],
+
   "capacitar": [
-    {
-      "title": "Excel para Opera\u00e7\u00f5es",
-      "url": "https://example.com/excel"
-    },
-    {
-      "title": "Marketing Digital \u2013 Fundamentos",
-      "url": "https://example.com/marketing"
-    },
-    {
-      "title": "Gest\u00e3o de Projetos para Eventos",
-      "url": "https://example.com/projetos"
-    }
+    { "title": "Excel para Operações",            "url": "https://example.com/excel" },
+    { "title": "Marketing Digital — Fundamentos", "url": "https://example.com/marketing" },
+    { "title": "Gestão de Projetos em Eventos",   "url": "https://example.com/projetos" }
   ],
-  {
+
   "wallpapers": [
-  { "title": "Neon Explosion",     "url": "/wallpapers/wallpaper_1.png" },
-  { "title": "Liquid Glass",       "url": "/wallpapers/wallpaper_2.png" },
-  { "title": "Abstract Waves",     "url": "/wallpapers/wallpaper_3.png" },
-  { "title": "Confetti Vibes",     "url": "/wallpapers/wallpaper_4.png" },
-  { "title": "Dynamic Gradient",   "url": "/wallpapers/wallpaper_5.png" },
-  { "title": "Festival Night",     "url": "/wallpapers/wallpaper_6.png" }
-]
-}
+    { "title": "Neon Explosion",   "url": "/wallpapers/wallpaper_1.png" },
+    { "title": "Liquid Glass",     "url": "/wallpapers/wallpaper_2.png" },
+    { "title": "Abstract Waves",   "url": "/wallpapers/wallpaper_3.png" },
+    { "title": "Confetti Vibes",   "url": "/wallpapers/wallpaper_4.png" },
+    { "title": "Dynamic Gradient", "url": "/wallpapers/wallpaper_5.png" },
+    { "title": "Festival Night",   "url": "/wallpapers/wallpaper_6.png" }
+  ]
 }
