@@ -62,23 +62,27 @@
   "wallpapers": [
     {
       "title": "Neon Party",
-      "url": "/wallpapers/wallpaper1_neon.jpg"
+      "url": "/wallpapers/wallpaper_1.png"
     },
     {
       "title": "Liquid Glass",
-      "url": "/wallpapers/wallpaper2_liquidglass.jpg"
+      "url": "/wallpapers/wallpaper_2.png"
     },
     {
       "title": "Confetti Vibes",
-      "url": "/wallpapers/wallpaper3_confetti.jpg"
+      "url": "/wallpapers/wallpaper_3.png"
     },
     {
       "title": "Minimal Clean",
-      "url": "/wallpapers/wallpaper4_minimal.jpg"
+      "url": "/wallpapers/wallpaper_4.png"
     },
     {
       "title": "Abstract",
-      "url": "/wallpapers/wallpaper5_abstract.jpg"
+      "url": "/wallpapers/wallpaper_5.png"
+    },
+    {
+      "title": "Extra",
+      "url": "/wallpapers/wallpaper_6.png"
     }
   ]
 }
