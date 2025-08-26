@@ -57,5 +57,29 @@
       "title": "Gest\u00e3o de Projetos para Eventos",
       "url": "https://example.com/projetos"
     }
+  ],
+  {
+  "wallpapers": [
+    {
+      "title": "Neon Party",
+      "url": "/wallpapers/wallpaper1_neon.jpg"
+    },
+    {
+      "title": "Liquid Glass",
+      "url": "/wallpapers/wallpaper2_liquidglass.jpg"
+    },
+    {
+      "title": "Confetti Vibes",
+      "url": "/wallpapers/wallpaper3_confetti.jpg"
+    },
+    {
+      "title": "Minimal Clean",
+      "url": "/wallpapers/wallpaper4_minimal.jpg"
+    },
+    {
+      "title": "Abstract",
+      "url": "/wallpapers/wallpaper5_abstract.jpg"
+    }
   ]
+}
 }
