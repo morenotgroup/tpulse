@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BottomNav from '@/components/BottomNav'
 import MiniCalendar from '@/components/MiniCalendar'
-import type { Route } from 'next'
 
 function useUserName() {
   const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null
@@ -16,7 +15,7 @@ function useUserName() {
   return qn || stored || 'Colaborador(a)'
 }
 
-type NavLink = { href: Route; label: string; emoji: string }
+type NavLink = { href: string; label: string; emoji: string }
 
 const links: ReadonlyArray<NavLink> = [
   { href: '/eventos',     label: 'Eventos',           emoji: '📅' },
@@ -40,7 +39,7 @@ export default function Home() {
         <p className="text-sm text-[color:var(--muted)]">A casa do T Group no seu celular.</p>
       </header>
 
-      {/* Hero “liquid glass” com foto */}
+      {/* Hero com imagem */}
       <section className="px-4">
         <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden border border-white/20 card">
           <Image src="/hero.jpg" alt="T Group" fill priority className="object-cover" />
