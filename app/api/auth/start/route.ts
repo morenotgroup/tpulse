@@ -1,45 +1,55 @@
+// app/api/auth/start/route.ts
 import { NextResponse } from 'next/server'
-import { signLoginToken } from '@/lib/jwt'
+import { sign } from '@/lib/jwt'
 import { sendMagicLink } from '@/lib/mailer'
 
-function firstFromFullName(full: string) {
-  const clean = full.toLowerCase().replace(/\s+/g, ' ').trim()
-    .split(' ').filter(Boolean).map(w => w[0]?.toUpperCase() + w.slice(1)).join(' ')
-  const blacklist = new Set(['De','Da','Do','Dos','Das','E'])
-  const parts = clean.split(' ').filter(Boolean)
-  for (const p of parts) if (!blacklist.has(p)) return p
-  return parts[0] || 'Colaborador(a)'
-}
+/**
+ * ENV esperadas:
+ * - AUTH_ALLOWED_DOMAINS="tgroup.com,agenciataj.com,neoformaturas.com,grupotoy.com.br,wearesinergy.com.br,tvenues.com.br,mood.com.br"
+ * - AUTH_BASE_URL="https://tpulse-74ng.vercel.app"  (ou seu domínio)
+ * - AUTH_JWT_TTL_SECONDS="900"  (15min; opcional, default abaixo)
+ */
 
-function firstFromEmail(email: string) {
-  const user = email.split('@')[0] || ''
-  const tokens = user.split(/[._-]+/).filter(Boolean)
-  return tokens.length ? (tokens[0][0]?.toUpperCase() + tokens[0].slice(1)) : 'Colaborador(a)'
+const TTL = Number(process.env.AUTH_JWT_TTL_SECONDS || 900)
+
+function isAllowedDomain(email: string) {
+  const list = (process.env.AUTH_ALLOWED_DOMAINS || '')
+    .split(',')
+    .map(s => s.trim().toLowerCase())
+    .filter(Boolean)
+  const domain = email.split('@')[1]?.toLowerCase() || ''
+  return list.includes(domain)
 }
 
 export async function POST(req: Request) {
   try {
     const { email, name } = await req.json()
+
     if (!email || typeof email !== 'string') {
-      return NextResponse.json({ ok: false, error: 'EMAIL_REQUIRED' }, { status: 400 })
-    }
-    // (opcional) restringir domínio:
-    if (!email.endsWith('@tgroup.com')) {
-      return NextResponse.json({ ok: false, error: 'DOMAIN_NOT_ALLOWED' }, { status: 401 })
+      return NextResponse.json({ ok: false, error: 'E-mail obrigatório' }, { status: 400 })
     }
 
-    const first = name ? firstFromFullName(name) : firstFromEmail(email)
-    const token = await signLoginToken({ email, name: first })
+    if (!isAllowedDomain(email)) {
+      return NextResponse.json({ ok: false, error: 'Domínio de e-mail não permitido' }, { status: 403 })
+    }
 
-    const base = process.env.NEXT_PUBLIC_BASE_URL || process.env.VERCEL_URL || ''
-    const origin = base
-      ? (base.startsWith('http') ? base : `https://${base}`)
-      : 'http://localhost:3000'
-    const url = `${origin}/api/auth/callback?token=${encodeURIComponent(token)}`
+    const payload = { email, name: typeof name === 'string' ? name : undefined }
+    const token = await sign(payload, TTL)
 
-    await sendMagicLink(email, url)
+    const base = process.env.AUTH_BASE_URL || process.env.NEXT_PUBLIC_APP_URL || ''
+    if (!base) {
+      return NextResponse.json({ ok: false, error: 'AUTH_BASE_URL não configurada' }, { status: 500 })
+    }
+
+    const url = new URL('/api/auth/callback', base)
+    url.searchParams.set('token', token)
+
+    // dispara o e-mail
+    await sendMagicLink(email, url.toString(), payload.name)
+
     return NextResponse.json({ ok: true })
   } catch (e) {
-    return NextResponse.json({ ok: false, error: 'SERVER_ERROR' }, { status: 500 })
+    console.error('POST /api/auth/start error', e)
+    return NextResponse.json({ ok: false, error: 'Falha ao enviar link' }, { status: 500 })
   }
 }
