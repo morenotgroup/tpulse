@@ -28,22 +28,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: 'Domínio não permitido' }, { status: 403 })
     }
 
-    // token de uso único p/ callback
-    const token = await sign({ email, name }, { expMinutes: 15 })
+    // token com validade de 15 minutos
+    const token = await sign({ email, name }, 15)
 
     const url = new URL('/api/auth/callback', BASE_URL)
     url.searchParams.set('token', token)
 
-    // envia e-mail (agora com nome opcional)
     await sendMagicLink(email, url.toString(), name)
 
-    // opcional: gravar hint local
-    const c = cookies()
-    c.set('tg_hint_email', email, { httpOnly: false, path: '/', maxAge: 60 * 60 * 24 * 7 })
+    // dica local (não protegida) para UX
+    cookies().set('tg_hint_email', email, { httpOnly: false, path: '/', maxAge: 60 * 60 * 24 * 7 })
 
     return NextResponse.json({ ok: true })
   } catch (e) {
-    console.error('start error', e)
+    console.error('auth/start error', e)
     return NextResponse.json({ ok: false, error: 'Falha ao iniciar login' }, { status: 500 })
   }
 }
