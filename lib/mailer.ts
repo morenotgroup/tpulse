@@ -1,4 +1,4 @@
-// lib/mailer.ts
+/// <reference path="../types/nodemailer.d.ts" />
 import nodemailer from 'nodemailer'
 
 const {
@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
  * @param displayName (opcional) nome para personalizar o assunto/corpo
  */
 export async function sendMagicLink(to: string, loginUrl: string, displayName?: string) {
-  const from = MAIL_FROM || 'T Group Intra <no-reply@tgroup.com>'
+  const from = MAIL_FROM || 'T Group Intra <no-reply@agenciataj.com>'
   const nome = (displayName || '').trim()
   const saudacao = nome ? `Olá, ${nome}!` : 'Olá!'
 
