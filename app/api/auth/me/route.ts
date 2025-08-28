@@ -1,26 +1,12 @@
 // app/api/auth/me/route.ts
-import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import { verify } from '@/lib/jwt'
 
-type User = { email: string; name?: string }
-
 export async function GET() {
-  try {
-    const cookieStore = cookies()
-    const raw = cookieStore.get('tg_session')?.value
-    if (!raw) {
-      return NextResponse.json({ user: null }, { status: 200 })
-    }
-
-    const data = await verify<User>(raw)
-    if (!data?.email) {
-      return NextResponse.json({ user: null }, { status: 200 })
-    }
-
-    return NextResponse.json({ user: { email: data.email, name: data.name } }, { status: 200 })
-  } catch (e) {
-    console.error('GET /api/auth/me error', e)
-    return NextResponse.json({ user: null }, { status: 200 })
-  }
+  const token = cookies().get('tg_auth')?.value || ''
+  const payload = token ? await verify(token) : null
+  if (!payload) return NextResponse.json({ user: null })
+  const user = { email: String(payload.email || ''), name: String(payload.name || '') }
+  return NextResponse.json({ user })
 }
