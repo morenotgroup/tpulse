@@ -1,22 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
-function titleCase(s: string) {
-  return s
-    .toLowerCase()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map(w => w[0]?.toUpperCase() + w.slice(1))
-    .join(' ')
-}
-
-function firstFromFullName(full: string) {
-  const clean = titleCase(full.trim().replace(/\s+/g, ' '))
-  const parts = clean.split(' ').filter(Boolean)
-  const blacklist = new Set(['De','Da','Do','Dos','Das','E'])
-  for (const p of parts) if (!blacklist.has(p)) return p
-  return parts[0] || 'Colaborador(a)'
+/** Lê os domínios permitidos do .env e formata para exibição */
+function useAllowedDomains() {
+  const raw = process.env.NEXT_PUBLIC_ALLOWED_EMAIL_DOMAINS || ''
+  return useMemo(
+    () =>
+      raw
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean),
+    [raw]
+  )
 }
 
 export default function LoginPage() {
@@ -25,6 +21,10 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  const domains = useAllowedDomains()
+  // placeholder padrão: usa o primeiro domínio permitido; fallback pra @agenciataj.com
+  const emailPlaceholder = `nome@${domains[0] || 'agenciataj.com'}`
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -41,6 +41,7 @@ export default function LoginPage() {
         setError(json.error || 'Erro ao enviar link')
       } else {
         setSent(true)
+        // Guarda localmente para a Home conseguir exibir “Bem-vindo(a), Nome” mais rápido
         if (name) localStorage.setItem('tg_user_name', firstFromFullName(name))
         localStorage.setItem('tg_user_email', email)
       }
@@ -79,14 +80,16 @@ export default function LoginPage() {
             required
             type="email"
             inputMode="email"
-            placeholder="nome@tgroup.com"
+            placeholder={emailPlaceholder}
             className="input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <p className="text-xs text-[color:var(--muted)]">
-            Domínios permitidos: {process.env.NEXT_PUBLIC_ALLOWED_DOMAINS}
-          </p>
+          {!!domains.length && (
+            <p className="text-xs text-[color:var(--muted)]">
+              Domínios permitidos: {domains.join(', ')}
+            </p>
+          )}
         </div>
 
         <div className="space-y-1">
@@ -108,4 +111,21 @@ export default function LoginPage() {
       </form>
     </main>
   )
+}
+
+/* ------- helpers para formatar o primeiro nome ------- */
+function titleCase(s: string) {
+  return s
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(w => w[0]?.toUpperCase() + w.slice(1))
+    .join(' ')
+}
+function firstFromFullName(full: string) {
+  const clean = titleCase(full.trim().replace(/\s+/g, ' '))
+  const parts = clean.split(' ').filter(Boolean)
+  const blacklist = new Set(['De', 'Da', 'Do', 'Dos', 'Das', 'E'])
+  for (const p of parts) if (!blacklist.has(p)) return p
+  return parts[0] || 'Colaborador(a)'
 }
