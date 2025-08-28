@@ -1,30 +1,46 @@
 // app/api/auth/callback/route.ts
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
-import { verify, sign } from '@/lib/jwt'
+import { sign, verify } from '@/lib/jwt'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+const COOKIE_NAME = 'tg_session'
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url)
-  const token = searchParams.get('token') || ''
-  const payload = await verify(token)
+  try {
+    const { searchParams } = new URL(req.url)
+    const token = searchParams.get('token')
+    if (!token) {
+      return NextResponse.redirect(new URL('/login?e=token', req.url))
+    }
 
-  if (!payload) {
-    const url = new URL('/login', BASE_URL)
-    url.searchParams.set('err', 'token')
-    return NextResponse.redirect(url)
+    // valida o token recebido por e-mail
+    const payload = await verify(token) // { email, name, iat, exp }
+    if (!payload?.email) {
+      return NextResponse.redirect(new URL('/login?e=payload', req.url))
+    }
+
+    // cria um novo JWT de sessão (ex.: 7 dias)
+    const sessionToken = await sign(
+      { email: payload.email, name: payload.name || '' },
+      60 * 24 * 7 // minutos
+    )
+
+    // prepara o redirect para Home
+    const res = NextResponse.redirect(new URL('/?hi=1', req.url))
+
+    // seta cookie na MESMA resposta do redirect
+    res.cookies.set({
+      name: COOKIE_NAME,
+      value: sessionToken,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 dias em segundos
+    })
+
+    return res
+  } catch (e) {
+    return NextResponse.redirect(new URL('/login?e=invalid', req.url))
   }
-
-  // emite um token de sessão (ex: 7 dias)
-  const session = await sign({ email: payload.email, name: payload.name }, 60 * 24 * 7) // 60*24*7 min = 7 dias
-
-  const res = NextResponse.redirect(new URL('/', BASE_URL))
-  // httpOnly protege a sessão
-  res.cookies.set('tg_auth', session, { httpOnly: true, sameSite: 'lax', secure: true, path: '/', maxAge: 60 * 60 * 24 * 7 })
-  // cookies visíveis para UI (nome/email)
-  if (payload.name) res.cookies.set('tg_user_name', payload.name, { httpOnly: false, sameSite: 'lax', secure: true, path: '/', maxAge: 60 * 60 * 24 * 30 })
-  if (payload.email) res.cookies.set('tg_user_email', payload.email, { httpOnly: false, sameSite: 'lax', secure: true, path: '/', maxAge: 60 * 60 * 24 * 30 })
-
-  return res
 }
