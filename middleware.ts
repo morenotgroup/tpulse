@@ -1,41 +1,31 @@
-import { NextResponse, NextRequest } from 'next/server'
+// middleware.ts
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-// rotas públicas SEM sessão
-const PUBLIC_PATHS = [
-  '/login',
-  '/api/auth/start',
-  '/api/auth/verify',
-  '/api/auth/me',
-  '/manifest.webmanifest',
-  '/icons',
-  '/wallpapers',           // deixo público para download
-  '/_next', '/favicon.ico', '/hero.jpg', '/pdfs', '/images', '/public'
-]
+const COOKIE_NAME = 'tg_session'
 
-function isPublic(path: string) {
-  return PUBLIC_PATHS.some((p) => path === p || path.startsWith(p + '/'))
-}
+// Defina aqui o que deve exigir login
+const PROTECTED_PREFIXES = ['/_private'] // exemplo; deixe vazio se não for usar agora
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
-  // liberar estáticos, api e login
-  if (isPublic(pathname)) return NextResponse.next()
+  // sempre liberar APIs de auth e a tela de login
+  if (pathname.startsWith('/api/auth') || pathname.startsWith('/login')) {
+    return NextResponse.next()
+  }
 
-  // se tiver token de sessão, segue o jogo
-  const token = req.cookies.get('tg_session')?.value
-  if (token) return NextResponse.next()
+  // se não tem áreas privadas ainda, não force nada na Home
+  const requiresAuth = PROTECTED_PREFIXES.some(pref => pathname.startsWith(pref))
+  if (!requiresAuth) return NextResponse.next()
 
-  // sem sessão? deixa acessar Home para ler o botão "Entrar"
-  if (pathname === '/') return NextResponse.next()
+  const hasSession = req.cookies.get(COOKIE_NAME)?.value
+  if (!hasSession) {
+    const url = req.nextUrl.clone()
+    url.pathname = '/login'
+    url.searchParams.set('from', pathname)
+    return NextResponse.redirect(url)
+  }
 
-  // qualquer outra rota protegida manda pro login
-  const url = req.nextUrl.clone()
-  url.pathname = '/login'
-  url.searchParams.set('next', pathname)
-  return NextResponse.redirect(url)
-}
-
-export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  return NextResponse.next()
 }
